@@ -50,4 +50,10 @@ export const styles = StyleSheet.create({
     marginTop: 36,
     marginBottom: 42,
   },
+
+  listEnptyText: {
+    color: "#FFF",
+    fontSize: 14,
+    textAlign: "center",
+  },
 });
