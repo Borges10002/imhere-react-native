@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
   FlatList,
+  Alert,
 } from "react-native";
 
 import { styles } from "./styles";
@@ -22,9 +23,25 @@ export default function Home() {
     "diego",
   ];
 
-  function handleParticipantAdd() {}
-  function handleParticipantRemove() {
-    console.log("testeremove");
+  function handleParticipantAdd() {
+    if (participants.includes("Diego")) {
+      return Alert.alert(
+        "Paricipante existe",
+        "Já existe um paricipante na lista"
+      );
+    }
+  }
+  function handleParticipantRemove(name: string) {
+    Alert.alert("Remover", `Remover o paricipante ${name}?`, [
+      {
+        text: "Sim",
+        onPress: () => Alert.alert("Deletado!"),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
   }
 
   return (
@@ -52,7 +69,7 @@ export default function Home() {
           <Participant
             key={item}
             name={item}
-            onRemove={handleParticipantRemove}
+            onRemove={() => handleParticipantRemove(item)}
           />
         )}
         showsVerticalScrollIndicator={false}
